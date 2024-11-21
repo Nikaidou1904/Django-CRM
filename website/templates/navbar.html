@@ -15,6 +15,14 @@
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'airline' %}">Airline</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'backpack' %}">Backpack</a>
+        </li>
+
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'register' %}">Register</a>

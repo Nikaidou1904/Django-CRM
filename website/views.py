@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
-from .models import Record
+from .models import Record, Airline, Backpack
 
 
 def home(request):
@@ -99,3 +99,24 @@ def update_record(request, pk):
 	else:
 		messages.success(request, "You Must Be Logged In...")
 		return redirect('home')
+
+
+def airline_record(request):
+	if request.user.is_authenticated:
+		# Look Up Records
+		airline_record = Airline.objects.all()
+		return render(request, 'airline.html', {'airline_record':airline_record})
+	else:
+		messages.success(request, "You Must Be Logged In To View That Page...")
+		return redirect('home')
+
+
+def backpack_record(request):
+	if request.user.is_authenticated:
+		# Look Up Records
+		backpack_record = Backpack.objects.all()
+		return render(request, 'backpack.html', {'backpack_record':backpack_record})
+	else:
+		messages.success(request, "You Must Be Logged In To View That Page...")
+		return redirect('home')
+
