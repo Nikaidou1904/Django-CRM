@@ -101,6 +101,8 @@ def update_record(request, pk):
 		return redirect('home')
 
 
+
+# Airline
 def airline_record(request):
 	if request.user.is_authenticated:
 		# Look Up Records
@@ -111,6 +113,13 @@ def airline_record(request):
 		return redirect('home')
 
 
+
+
+
+
+
+
+# Backpack
 def backpack_record(request):
 	if request.user.is_authenticated:
 		# Look Up Records
