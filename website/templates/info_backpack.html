@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="card">
+  <div class="card-header"><strong>
+    	{{ info_backpack.brand }}</strong>
+  </div>
+  <div class="card-body">
+
+<div class="card">
+  <div class="card-header"><strong>
+      {{ info_backpack.backpack_name }}</strong>
+  </div>
+  <div class="card-body">
+
+<p class="card-text">
+<strong>Length: </strong>{{ info_backpack.b_length }}</p>
+
+<p class="card-text">
+<strong>Width: </strong>{{ info_backpack.b_width }}</p>
+
+<p class="card-text">
+<strong>Depth: </strong>{{ info_backpack.b_depth }}</p>
+
+<p class="card-text">
+<strong>Weight: </strong>{{ info_backpack.b_weight }}</p>
+
+<p class="card-text">
+<strong>ID: </strong>{{ info_backpack.id }}</p>
+    
+    
+  </div>
+</div>
+
+<br/><br/>
+<a href="{% url 'backpack' %}" class="btn btn-secondary">Back</a>
+
+<a href="{% url 'delete_backpack' info_backpack.id %}" class="btn btn-danger">Delete</a>
+
+<a href="{% url 'update_backpack' info_backpack.id %}" class="btn btn-secondary">Update Backpack</a>
+		
+
+{% endblock %}

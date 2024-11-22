@@ -7,45 +7,11 @@
 {% if user.is_authenticated %}
 
 
-<table class="table table-striped table-hover table-bordered">
-  <thead class="table-dark">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Address</th>
-      <th scope="col">City</th>
-      <th scope="col">State</th>
-      <th scope="col">Zipcode</th>
-      <th scope="col">Created At</th>
-      <th scope="col">ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-{% if records %}
-  {% for record in records %}
-    <tr>
-      <td>{{ record.first_name }} {{ record.last_name }}</td>
-      <td>{{ record.email }}</td>
-      <td>{{ record.phone }}</td>
-      <td>{{ record.address }}</td>
-      <td>{{ record.city }}</td>
-      <td>{{ record.state }}</td>
-      <td>{{ record.zipcode }}</td>
-      <td>{{ record.created_at }}</td>
-      <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
-    </tr>
-  {% endfor %}
+<h1>Guten tag!</h1>
 
-{% endif %}
+<body>My name is Julius and this is my project for LIS 160. My idea was to create two tables: (1) a list of carry-on limits among different airlines in the Philippines and (2) a list of backpack with their weight and dimensions. The plan was to eventually let the user compare the two tables to see if a certain backpack will be allowed as carry-on for a certain airline but due to time constraints and skill issue on my part, I didn't add that feature to preserve my sanity. Besides, the only requirement is that the website works flawlessly, it has CRUD, and a touch of personalization right? I got finals coming up bruh o(╥﹏╥)o</body><br/><br/>
 
-  
-    </tbody>
-  </table>
-
-
-
+<body>For a bit of context on the purpose of this site, there's a thing called "One Bag Travel". It's for people who frequently travel on airlines and want to avoid checked in luggage at all costs. This could mean that someone practices minimalism by only carrying what they need but on the other end of the spectrum is consumerism, which means buying ultralight gear and the most expensive backpacks on the market. I mean, most of the stuff I've seen in niche internet hobbies are consumerist but I still find it interesting and I am interested in traveling around different corners of the world someday.</body>
 
 
 {% else %}

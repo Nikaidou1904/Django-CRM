@@ -6,7 +6,8 @@
 
 {% if user.is_authenticated %}
 
-<body>This a list of airlines with their corresponding carry-on limits.</body>
+<h1>Airline Carry-On Limit</h1>
+<body>This is a simple list of airlines with their corresponding limits on luggage dimensions (cm) and weight (kg) for their overhead compartment.</body>
 <br/><br/>
 
 <table class="table table-striped table-hover table-bordered">
@@ -23,10 +24,10 @@
   <tbody>
 
 
-{% if records %}
+{% if airlines %}
   {% for airline in airlines %}
     <tr>
-      <td><a href="{% url 'airline' airline_record.id %}">{{ airline_record.id }}</a></td>
+      <td><a href="{% url 'info_airline' airline.id %}">{{ airline.id }}<a/></td>
       <td>{{ airline.airline_name }}</td>
       <td>{{ airline.a_length }}</td>
       <td>{{ airline.a_width }}</td>

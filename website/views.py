@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm, AddRecordForm
+from .forms import SignUpForm, AddAirlineForm, AddBackpackForm
 from .models import Record, Airline, Backpack
 
 
+
+
+
+# Home page cuz why not
 def home(request):
 	records = Record.objects.all()
 	# Check to see if logging in
@@ -25,6 +29,9 @@ def home(request):
 
 
 
+
+
+# Authentication stuff
 def logout_user(request):
 	logout(request)
 	messages.success(request, "You Have Been Logged Out...")
@@ -51,20 +58,32 @@ def register_user(request):
 
 
 
-def customer_record(request, pk):
+# Airline CRUD
+def airline_record(request):
 	if request.user.is_authenticated:
-		# Look Up Records
-		customer_record = Record.objects.get(id=pk)
-		return render(request, 'record.html', {'customer_record':customer_record})
+		# For Airline Page
+		airlines = Airline.objects.all()
+		return render(request, 'airline.html', {'airlines':airlines})
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
 		return redirect('home')
 
 
 
-def delete_record(request, pk):
+def info_airline(request, pk):
 	if request.user.is_authenticated:
-		delete_it = Record.objects.get(id=pk)
+		# For Each Airline ID
+		info_airline = Airline.objects.get(id=pk)
+		return render(request, 'info_airline.html', {'info_airline':info_airline})
+	else:
+		messages.success(request, "You Must Be Logged In To View That Page...")
+		return redirect('home')
+
+
+
+def delete_airline(request, pk):
+	if request.user.is_authenticated:
+		delete_it = Airline.objects.get(id=pk)
 		delete_it.delete()
 		messages.success(request, "Record Deleted Successfully...")
 		return redirect('home')
@@ -73,59 +92,92 @@ def delete_record(request, pk):
 		return redirect('home')
 
 
-def add_record(request):
-	form = AddRecordForm(request.POST or None)
+def add_airline(request):
+	form = AddAirlineForm(request.POST or None)
 	if request.user.is_authenticated:
 		if request.method == "POST":
 			if form.is_valid():
-				add_record = form.save()
+				add_airline = form.save()
 				messages.success(request, "Record Added...")
 				return redirect('home')
-		return render(request, 'add_record.html', {'form':form})
+		return render(request, 'add_airline.html', {'form':form})
 	else:
 		messages.success(request, "You Must Be Logged In...")
 		return redirect('home')
 
 
-def update_record(request, pk):
+def update_airline(request, pk):
 	if request.user.is_authenticated:
-		current_record = Record.objects.get(id=pk)
-		form = AddRecordForm(request.POST or None, instance=current_record)
+		current_record = Airline.objects.get(id=pk)
+		form = AddAirlineForm(request.POST or None, instance=current_record)
 		if form.is_valid():
 			form.save()
 			messages.success(request, "Record Has Been Updated!")
 			return redirect('home')
-		return render(request, 'update_record.html', {'form':form})
+		return render(request, 'update_airline.html', {'form':form})
 	else:
 		messages.success(request, "You Must Be Logged In...")
 		return redirect('home')
 
 
 
-# Airline
-def airline_record(request):
-	if request.user.is_authenticated:
-		# Look Up Records
-		airline_record = Airline.objects.all()
-		return render(request, 'airline.html', {'airline_record':airline_record})
-	else:
-		messages.success(request, "You Must Be Logged In To View That Page...")
-		return redirect('home')
 
 
-
-
-
-
-
-
-# Backpack
+# Backpack CRUD
 def backpack_record(request):
 	if request.user.is_authenticated:
-		# Look Up Records
-		backpack_record = Backpack.objects.all()
-		return render(request, 'backpack.html', {'backpack_record':backpack_record})
+		# For Backpak Page
+		backpacks = Backpack.objects.all()
+		return render(request, 'backpack.html', {'backpacks':backpacks})
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
 		return redirect('home')
 
+def info_backpack(request, pk):
+	if request.user.is_authenticated:
+		# For Each Backpack ID
+		info_backpack = Backpack.objects.get(id=pk)
+		return render(request, 'info_backpack.html', {'info_backpack':info_backpack})
+	else:
+		messages.success(request, "You Must Be Logged In To View That Page...")
+		return redirect('home')
+
+
+
+def delete_backpack(request, pk):
+	if request.user.is_authenticated:
+		delete_it = Backpack.objects.get(id=pk)
+		delete_it.delete()
+		messages.success(request, "Record Deleted Successfully...")
+		return redirect('home')
+	else:
+		messages.success(request, "You Must Be Logged In To Do That...")
+		return redirect('home')
+
+
+def add_backpack(request):
+	form = AddBackpackForm(request.POST or None)
+	if request.user.is_authenticated:
+		if request.method == "POST":
+			if form.is_valid():
+				add_backpack = form.save()
+				messages.success(request, "Record Added...")
+				return redirect('home')
+		return render(request, 'add_backpack.html', {'form':form})
+	else:
+		messages.success(request, "You Must Be Logged In...")
+		return redirect('home')
+
+
+def update_backpack(request, pk):
+	if request.user.is_authenticated:
+		current_backpack = Backpack.objects.get(id=pk)
+		form = AddBackpackForm(request.POST or None, instance=current_backpack)
+		if form.is_valid():
+			form.save()
+			messages.success(request, "Record Has Been Updated!")
+			return redirect('home')
+		return render(request, 'update_backpack.html', {'form':form})
+	else:
+		messages.success(request, "You Must Be Logged In...")
+		return redirect('home')

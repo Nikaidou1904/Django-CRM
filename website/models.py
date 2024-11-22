@@ -1,6 +1,6 @@
 from django.db import models
 
-# Yeah I'm not touching this lol
+# Yeah I'm keeping this up cuz I'm too lazy to edit :p and I have finals coming please god
 class Record(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	first_name = models.CharField(max_length=50)
@@ -12,8 +12,6 @@ class Record(models.Model):
 	state =  models.CharField(max_length=50)
 	zipcode =  models.CharField(max_length=20)
 
-	def __str__(self):
-		return(f"{self.first_name} {self.last_name}")\
 
 # I did migrate again to make this work
 class Airline(models.Model):
