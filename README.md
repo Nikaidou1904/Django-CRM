@@ -37,5 +37,4 @@ carry-on limit.
 
 ## Credits ##
 
-Django Project - Code a CRM App Tutorial by freeCodeCamp.org
-https://youtu.be/t10QcFx7d5k?si=yS7I2iX1-ri6Fs8C
+[Django Project - Code a CRM App Tutorial by freeCodeCamp.org](https://youtu.be/t10QcFx7d5k?si=yS7I2iX1-ri6Fs8C)
