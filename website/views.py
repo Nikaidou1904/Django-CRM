@@ -86,7 +86,7 @@ def delete_airline(request, pk):
 		delete_it = Airline.objects.get(id=pk)
 		delete_it.delete()
 		messages.success(request, "Record Deleted Successfully...")
-		return redirect('home')
+		return redirect('airline')
 	else:
 		messages.success(request, "You Must Be Logged In To Do That...")
 		return redirect('home')
@@ -99,7 +99,7 @@ def add_airline(request):
 			if form.is_valid():
 				add_airline = form.save()
 				messages.success(request, "Record Added...")
-				return redirect('home')
+				return redirect('airline')
 		return render(request, 'add_airline.html', {'form':form})
 	else:
 		messages.success(request, "You Must Be Logged In...")
@@ -113,7 +113,7 @@ def update_airline(request, pk):
 		if form.is_valid():
 			form.save()
 			messages.success(request, "Record Has Been Updated!")
-			return redirect('home')
+			return redirect('airline')
 		return render(request, 'update_airline.html', {'form':form})
 	else:
 		messages.success(request, "You Must Be Logged In...")
@@ -149,7 +149,7 @@ def delete_backpack(request, pk):
 		delete_it = Backpack.objects.get(id=pk)
 		delete_it.delete()
 		messages.success(request, "Record Deleted Successfully...")
-		return redirect('home')
+		return redirect('backpack')
 	else:
 		messages.success(request, "You Must Be Logged In To Do That...")
 		return redirect('home')
@@ -162,7 +162,7 @@ def add_backpack(request):
 			if form.is_valid():
 				add_backpack = form.save()
 				messages.success(request, "Record Added...")
-				return redirect('home')
+				return redirect('backpack')
 		return render(request, 'add_backpack.html', {'form':form})
 	else:
 		messages.success(request, "You Must Be Logged In...")
@@ -176,7 +176,7 @@ def update_backpack(request, pk):
 		if form.is_valid():
 			form.save()
 			messages.success(request, "Record Has Been Updated!")
-			return redirect('home')
+			return redirect('backpack')
 		return render(request, 'update_backpack.html', {'form':form})
 	else:
 		messages.success(request, "You Must Be Logged In...")

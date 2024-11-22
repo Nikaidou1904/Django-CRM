@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="col-md-6 offset-md-3">
-<h1>Add Backpack</h1>
+<h1>Update Backpack</h1>
 <br/>
 
 <form method="POST">
@@ -11,8 +11,8 @@
 	{{ form.as_p }}
 
 <br/>
-  <button type="submit" class="btn btn-secondary">Update Backpack</button>
-
+	<a href="{% url 'backpack' %}" class="btn btn-secondary">Back</a>
+  <button type="submit" class="btn btn-info">Update</button>
 </form>
 
 
