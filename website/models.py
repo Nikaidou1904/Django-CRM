@@ -1,6 +1,6 @@
 from django.db import models
 
-# Yeah I'm keeping this up cuz I'm too lazy to edit :p and I have finals coming please god
+# I no longer use this in any of the .py and .html files but I'm still keeping it here in case I do want to use it someday
 class Record(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	first_name = models.CharField(max_length=50)
@@ -13,7 +13,7 @@ class Record(models.Model):
 	zipcode =  models.CharField(max_length=20)
 
 
-# I did migrate again to make this work
+# I thought of using DecimalField but instead, I used IntegerField for convenience
 class Airline(models.Model):
 	airline_name = models.CharField(max_length=50)
 	a_length = models.IntegerField(blank=True)
@@ -28,3 +28,5 @@ class Backpack(models.Model):
 	b_width = models.IntegerField(blank=True)
 	b_depth = models.IntegerField(blank=True)
 	b_weight = models.IntegerField(blank=True)
+
+# I could implement these changes but I got finals coming up bruh

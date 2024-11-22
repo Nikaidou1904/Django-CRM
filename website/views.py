@@ -8,7 +8,7 @@ from .models import Record, Airline, Backpack
 
 
 
-# Home page cuz why not
+# Home page
 def home(request):
 	records = Record.objects.all()
 	# Check to see if logging in
@@ -31,7 +31,7 @@ def home(request):
 
 
 
-# Authentication stuff
+# Authentication
 def logout_user(request):
 	logout(request)
 	messages.success(request, "You Have Been Logged Out...")
@@ -58,10 +58,13 @@ def register_user(request):
 
 
 
+
+
 # Airline CRUD
+
+# This is for the airline table in airline.html
 def airline_record(request):
 	if request.user.is_authenticated:
-		# For Airline Page
 		airlines = Airline.objects.all()
 		return render(request, 'airline.html', {'airlines':airlines})
 	else:
@@ -69,10 +72,9 @@ def airline_record(request):
 		return redirect('home')
 
 
-
+# For clickable ID in airline.html, which then redirects you to info_airline.html
 def info_airline(request, pk):
 	if request.user.is_authenticated:
-		# For Each Airline ID
 		info_airline = Airline.objects.get(id=pk)
 		return render(request, 'info_airline.html', {'info_airline':info_airline})
 	else:
@@ -80,7 +82,7 @@ def info_airline(request, pk):
 		return redirect('home')
 
 
-
+# Delete button in info_airline.html
 def delete_airline(request, pk):
 	if request.user.is_authenticated:
 		delete_it = Airline.objects.get(id=pk)
@@ -92,6 +94,7 @@ def delete_airline(request, pk):
 		return redirect('home')
 
 
+# This is for a URL in the navbar that redirects to the form add_airline.html
 def add_airline(request):
 	form = AddAirlineForm(request.POST or None)
 	if request.user.is_authenticated:
@@ -106,6 +109,7 @@ def add_airline(request):
 		return redirect('home')
 
 
+# Update button in info_airline.html, which then redirects you to update_airline.html
 def update_airline(request, pk):
 	if request.user.is_authenticated:
 		current_record = Airline.objects.get(id=pk)
@@ -124,6 +128,8 @@ def update_airline(request, pk):
 
 
 # Backpack CRUD
+
+# This is for the backpack table in backpack.html
 def backpack_record(request):
 	if request.user.is_authenticated:
 		# For Backpak Page
@@ -133,6 +139,8 @@ def backpack_record(request):
 		messages.success(request, "You Must Be Logged In To View That Page...")
 		return redirect('home')
 
+
+# For clickable ID in backpack.html, which then redirects you to info_backpack.html
 def info_backpack(request, pk):
 	if request.user.is_authenticated:
 		# For Each Backpack ID
@@ -143,7 +151,7 @@ def info_backpack(request, pk):
 		return redirect('home')
 
 
-
+# Delete button in info_backpack.html
 def delete_backpack(request, pk):
 	if request.user.is_authenticated:
 		delete_it = Backpack.objects.get(id=pk)
@@ -155,6 +163,7 @@ def delete_backpack(request, pk):
 		return redirect('home')
 
 
+# This is for a URL in the navbar that redirects to the form add_backpack.html
 def add_backpack(request):
 	form = AddBackpackForm(request.POST or None)
 	if request.user.is_authenticated:
@@ -169,6 +178,7 @@ def add_backpack(request):
 		return redirect('home')
 
 
+# Update button in info_backpack.html, which then redirects you to backpack.html
 def update_backpack(request, pk):
 	if request.user.is_authenticated:
 		current_backpack = Backpack.objects.get(id=pk)
