@@ -24,14 +24,15 @@ carry-on limit.
 
 ## How to install and run: ##
 
-1. Before you download the website, make sure you have Git, MySQL, Python, and Django installed
+1.Before you download, make sure you have Python (at least 3.13) and Git Bash installed
 2. Download and extract the file
 3. On your terminal, cd into the location of dcrm
-4. On your terminal, run "py manage.py runserver"
-5. Go to "localhost:8000" on your browser
-6. Create an account by clicking on "Register" 
-7. Log in using your account
-8. You can now create, read, update, and delete data from the website
+4. On your terminal, "pip install mysql" then "pip install mysql-connector-python"
+5. On your terminal, run "py manage.py runserver"
+6. Go to "localhost:8000" on your browser
+7. Create an account by clicking on "Register" 
+8. Log in using your account
+9. You can now create, read, update, and delete data from the website
 
 
 
